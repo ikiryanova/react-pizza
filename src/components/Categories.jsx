@@ -39,23 +39,22 @@ function Categories({ items }) {
   }
 
   return (
-    <div>
-      <div className="categories">
-        <ul>
-          {items &&
-            items.map((item, index) => (
-              <li 
-                className={activeItem === index ? 'active' : ''}
-                onClick={() => onSelectItem(index)} 
-                key={`${item}__${index}`}
-              >
-                {item}
-              </li>
-            ))
-          }
-        </ul>
-      </div> 
-    </div>
+    <div className="categories">
+      <ul>
+        {items &&
+          items.map((item, index) => (
+            <li 
+              className={activeItem === index ? 'active' : ''}
+              onClick={() => onSelectItem(index)} 
+              key={`${item}__${index}`}
+            >
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </div> 
+
   );
 }
 
