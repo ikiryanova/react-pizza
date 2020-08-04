@@ -1,41 +1,11 @@
 import React from 'react';
 
-// class Categories extends React.Component {
-  
-//   state = {
-//     activeItem: 1,
-//   };
-
-//   onSelectItem = index => {
-//     this.setState({
-//       activeItem: index,    // обновляет состояние
-//     }); 
-//   }
-
-//   render() {
-//     const { items } = this.props;
-//     return (
-//       <div>
-//         <div className="categories">
-//           <ul>
-//             <li className="active">Все</li>
-//             {
-//               items.map((item, index) => (
-//                 <li className={this.state.activeItem === index ? 'active' : ''} onClick={() => this.onSelectItem(index)} key={`${item}__${index}`}>{item}</li>
-//               ))
-//             }
-//           </ul>
-//         </div>
-//       </div>
-//     )
-//   };
-// }
-
-function Categories({ items }) {
+const Categories = React.memo(function Categories({ items, onClickItem }) {
   const [activeItem, setActiveItem] = React.useState(0);
 
   const onSelectItem = (index) => {
     setActiveItem(index);
+    onClickItem(index);
   }
 
   return (
@@ -43,9 +13,9 @@ function Categories({ items }) {
       <ul>
         {items &&
           items.map((item, index) => (
-            <li 
+            <li
               className={activeItem === index ? 'active' : ''}
-              onClick={() => onSelectItem(index)} 
+              onClick={() => onSelectItem(index)}
               key={`${item}__${index}`}
             >
               {item}
@@ -53,9 +23,9 @@ function Categories({ items }) {
           ))
         }
       </ul>
-    </div> 
+    </div>
 
   );
-}
+});
 
 export default Categories;
